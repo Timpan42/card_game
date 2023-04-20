@@ -12,6 +12,7 @@ public class card {
     }
 
     public void setPrise(int prise) {
+        prise = Random(1,10);
         this.prise = prise;
     }
 
@@ -20,7 +21,16 @@ public class card {
     }
 
     public void setHp(int hp) {
-        this.hp = hp;
+        int prise = getPrise();
+        if(prise >= 1 || prise <= 3){
+            mana = Random(1,10);
+        }
+        else if(prise > 3 || prise <= 6){
+            mana = Random(5, 20);
+        }
+        else{
+            mana = Random(10, 100);
+        }
     }
 
     public int getDamage() {
@@ -65,9 +75,10 @@ public class card {
         return element;
     }
 
-    public void setElement(String element) {
+    public void setElement() {
+        int  i = Random(1,4);
         String[] elementList = {"FIRE","AIR","WATER","EARTH"};
-        this.element = element;
+        this.element = elementList[i];
     }
 
     public int Random(int min, int max){
