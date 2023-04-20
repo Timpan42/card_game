@@ -11,8 +11,8 @@ public class card {
         return prise;
     }
 
-    public void setPrise(int prise) {
-        prise = Random(1,10);
+    public void setPrise() {
+        int prise = Random(1,10);
         this.prise = prise;
     }
 
@@ -20,25 +20,28 @@ public class card {
         return hp;
     }
 
-    public void setHp(int hp) {
+    public int setHp() {
         int prise = getPrise();
-        if(prise >= 1 || prise <= 3){
-            mana = Random(1,10);
+        int hp;
+        if(prise >= 1 && prise <= 3){
+            hp = Random(1,10);
         }
-        else if(prise > 3 || prise <= 6){
-            mana = Random(5, 20);
+        else if(prise > 3 && prise <= 6){
+            hp = Random(5, 20);
         }
         else{
-            mana = Random(10, 100);
+            hp = Random(10, 100);
         }
+        return this.hp = hp;
     }
 
     public int getDamage() {
         return damage;
     }
 
-    public void setDamage(int damage) {
+    public void setDamage() {
         int prise = getPrise();
+        int damage;
         if(prise >= 1 && prise <= 3){
             damage = Random(1,15);
         }
@@ -56,12 +59,13 @@ public class card {
         return mana;
     }
 
-    public void setMana(int mana) {
+    public void setMana() {
         int prise = getPrise();
-        if(prise >= 1 || prise <= 3){
+        int mana;
+        if(prise >= 1 && prise <= 3){
            mana = Random(1,10);
         }
-        else if(prise > 3 || prise <= 6){
+        else if(prise > 3 && prise <= 6){
             mana = Random(5, 20);
         }
         else{
@@ -82,8 +86,8 @@ public class card {
     }
 
     public int Random(int min, int max){
-        int min_num = max;
-        int max_num = min;
+        int min_num = min;
+        int max_num = max;
         Random rad1 = new Random();
         int num = rad1.nextInt(max_num - min_num) + min_num;
 
