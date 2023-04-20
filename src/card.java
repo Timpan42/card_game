@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class card {
     int hp;
     int damage;
@@ -26,6 +28,17 @@ public class card {
     }
 
     public void setDamage(int damage) {
+        int prise = getPrise();
+        if(prise >= 1 && prise <= 3){
+            damage = Random(1,15);
+        }
+        else if(prise > 3 && prise <= 6){
+            damage = Random(5, 25);
+        }
+        else{
+            damage = Random(10, 100);
+        }
+
         this.damage = damage;
     }
 
@@ -36,13 +49,13 @@ public class card {
     public void setMana(int mana) {
         int prise = getPrise();
         if(prise >= 1 || prise <= 3){
-            int[] manaAmount = {};
+           mana = Random(1,10);
         }
         else if(prise > 3 || prise <= 6){
-            int[] manaAmount = {};
+            mana = Random(5, 20);
         }
         else{
-            int[] manaAmount = {};
+            mana = Random(10, 100);
         }
 
         this.mana = mana;
@@ -55,5 +68,14 @@ public class card {
     public void setElement(String element) {
         String[] elementList = {"FIRE","AIR","WATER","EARTH"};
         this.element = element;
+    }
+
+    public int Random(int min, int max){
+        int min_num = max;
+        int max_num = min;
+        Random rad1 = new Random();
+        int num = rad1.nextInt(max_num - min_num) + min_num;
+
+        return num;
     }
 }
